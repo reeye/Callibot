@@ -1,4 +1,4 @@
-// V1.0.5
+// V1.0.6
 let KInitialized = 0
 let KLedState = 0
 let KFunkAktiv = 0
