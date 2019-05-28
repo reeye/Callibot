@@ -1,4 +1,4 @@
-// V1.0.4
+// V1.0.5
 let KInitialized = 0
 let KLedState = 0
 let KFunkAktiv = 0
@@ -97,7 +97,7 @@ enum KCheck {
 }
 
 //% color="#FF0000" icon="\uf013" block="Calli:bot"
-namespace Callibot {
+namespace callibot_ {
 
     function KInit() {
         if (KInitialized != 1) {
