@@ -1,4 +1,4 @@
-// V1.0.6_
+// V1.0.9
 let KInitialized = 0
 let KLedState = 0
 let KFunkAktiv = 0
@@ -15,6 +15,13 @@ enum KStop {
     Frei,
     //% block="bremsend"
     Bremsen
+}
+
+enum KnServo {
+    //% block="Nr.1"
+    Servo1,
+    //% block="Nr.2"
+    Servo2
 }
 
 enum KSensor {
@@ -151,6 +158,28 @@ namespace callibot_ {
         else {
             writeMotor(nr, 0, 0);
         }
+    }
+    
+    //% pos.min=0 pos.max=180
+    //% blockId=K_Servo block="Bewege Servo |%nr| auf |%pos|°"
+    export function servo(nr: KnServo, pos: number) {
+        let buffer = pins.createBuffer(2)
+        if (pos < 0) {
+            pos = 0
+        }
+        if (pos > 180) {
+            pos = 180
+        }
+        switch (nr) {
+            case KnServo.Servo1:
+                buffer[0] = 0x14;
+                break;
+            case KnServo.Servo2:
+                buffer[0] = 0x15;
+                break;
+        }
+        buffer[1] = pos
+        pins.i2cWriteBuffer(0x20, buffer)
     }
 
     //% blockId=K_SetLed block="Schalte LED |%KSensor| |%KState"
