@@ -1,4 +1,4 @@
-// V1.0.9.
+// V1.0.10
 let KInitialized = 0
 let KLedState = 0
 let KFunkAktiv = 0
@@ -159,7 +159,7 @@ namespace callibot_ {
             writeMotor(nr, 0, 0);
         }
     }
-    
+
     //% pos.min=0 pos.max=180
     //% blockId=K_Servo block="Bewege Servo |%nr| auf |%pos|°"
     export function servo(nr: KnServo, pos: number) {
@@ -297,7 +297,7 @@ namespace callibot_ {
     //% blockId K_readLineSensor color="#00C040" block="Liniensensor |%sensor| |%status"
     export function readLineSensor(sensor: KSensor, status: KSensorStatus): boolean {
         let result = false
-        
+
         let buffer = pins.i2cReadBuffer(0x21, 1);
         KInit();
         if (sensor == KSensor.links) {
@@ -406,7 +406,7 @@ namespace callibot_ {
         })
         radio.setGroup(gruppe)
         while (1 == 1) {
-            if (KFunkAktiv == 0){
+            if (KFunkAktiv == 0) {
                 if (MotorLinks < 0) {
                     motor(KMotor.rechts, KDir.vorwärts, Math.abs(MotorLinks))
                 } else {
@@ -465,8 +465,8 @@ namespace callibot_ {
     }
 
     //% blockId=K_Fernsteuerung_Status color="#E3008C" block="Schalte Empfänger |%status"
-    export function empfaengerStatus(status : KFunk) {
-        if (status == KFunk.an){
+    export function empfaengerStatus(status: KFunk) {
+        if (status == KFunk.an) {
             KFunkAktiv = 0
         }
         else {
