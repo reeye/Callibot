@@ -1,10 +1,9 @@
 {
     "name": "Calli:bot",
-    "version": "1.0.11",
+    "version": "1.0.11a",
     "description": "",
     "dependencies": {
-        "core": "*",
-        "radio": "*"
+        "core": "*"
     },
     "files": [
         "README.md",
