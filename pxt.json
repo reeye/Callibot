@@ -1,6 +1,6 @@
 {
     "name": "Calli:bot",
-    "version": "1.0.11a",
+    "version": "1.0.11b",
     "description": "",
     "dependencies": {
         "core": "*"
