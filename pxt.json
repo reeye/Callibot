@@ -1,6 +1,6 @@
 {
     "name": "Calli:bot iPad",
-    "version": "1.0.10c",
+    "version": "0.0.1",
     "description": "",
     "dependencies": {
         "core": "*"
