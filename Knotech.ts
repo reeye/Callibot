@@ -1,4 +1,4 @@
-// V1.0.10c
+// V1.0.10d
 let KInitialized = 0
 let KLedState = 0
 let KFunkAktiv = 0
@@ -103,8 +103,8 @@ enum KCheck {
     greaterThan
 }
 
-//% color="#FF0000" icon="\uf013" block="Calli:bot iPad"
-namespace callibot__ {
+//% color="#FF0000" icon="\uf013" block="Calli:bot"
+namespace callibot_ {
 
     function KInit() {
         if (KInitialized != 1) {
