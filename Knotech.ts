@@ -1,4 +1,8 @@
-// V1.0.10d
+// V1.0.14
+// Hinweis: Die Fernsteuer-Befehle wurden entfernt, weil die hierfür nötige "FUNK"
+// Bibliothek nicht kompatibel zur "Bluetooth" Bibliothek ist. 
+// Dadurch wurde die Möglichkeit, per Bluetooth hochzuladen abgeschaltet.
+
 let KInitialized = 0
 let KLedState = 0
 let KFunkAktiv = 0
@@ -103,8 +107,8 @@ enum KCheck {
     greaterThan
 }
 
-//% color="#FF0000" icon="\uf013" block="Calli:bot (bt)"
-namespace callibot_ {
+//% color="#FF0000" icon="\uf013" block="Calli:bot"
+namespace callibot {
 
     function KInit() {
         if (KInitialized != 1) {
