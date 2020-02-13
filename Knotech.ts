@@ -179,8 +179,14 @@ namespace callibot {
     //% blockId=K_wagenDrehen block="Drehe den Calli:Bot in Richtung "
     export function wagenDrehen() {
         while (input.compassHeading() > 195 || input.compassHeading() < 165) {
-            motor(KMotor.rechts, KDir.vorwärts, 5);
-            motor(KMotor.links, KDir.rückwärts, 5);
+            if (input.compassHeading() > 195) {
+                motor(KMotor.rechts, KDir.vorwärts, 5);
+                motor(KMotor.links, KDir.rückwärts, 5);
+            }
+            else {
+                motor(KMotor.rechts, KDir.rückwärts, 5);
+                motor(KMotor.links, KDir.vorwärts, 5);
+            }
         }
 
         motorStop(KMotor.beide, KStop.Bremsen);
