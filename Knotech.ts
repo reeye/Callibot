@@ -191,6 +191,12 @@ namespace callibot {
 
         motorStop(KMotor.beide, KStop.Bremsen);
     }
+
+
+    export function normalize(max: number, value: number) : number {
+        return (number * 10) / max
+    }
+
 	
     //% pos.min=0 pos.max=180
     //% blockId=K_Servo block="Bewege Servo |%nr| auf |%pos|°"
