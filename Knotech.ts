@@ -28,6 +28,17 @@ enum KnServo {
     Servo2
 }
 
+enum Orientierung {
+	 //% block="Norden"
+	Norden,
+	 //% block="Süden"
+	Sueden,
+	 //% block="Osten
+	Osten,
+	 //% block="Westen"
+	Westen
+}
+
 enum KSensor {
     links,
     rechts
@@ -141,7 +152,7 @@ namespace callibot {
     }
 
     //% speed.min=5 speed.max=100
-    //% blockId=K_motor block="Schalte Motor |%KMotor| |%KDir| mit |%number| %"
+    //% blockId=K_motor block="BBSchalte Motor |%KMotor| |%KDir| mit |%number| %"
     export function motor(nr: KMotor, direction: KDir, speed: number) {
         if (speed > 100) {
             speed = 100
@@ -164,6 +175,18 @@ namespace callibot {
         }
     }
 
+    //="Stoppe Motor Pizza $nr"
+    //% blockId=K_motorStop2 block="Pizza Stoppe Motor |%nr| |%mode"
+    export function motorStopPop(nr: KMotor, mode: KStop) {
+        if (mode == KStop.Frei) {
+            writeMotor(nr, 0, 1);
+        }
+        else {
+            writeMotor(nr, 0, 0);
+        }
+    }
+	
+	
     //% pos.min=0 pos.max=180
     //% blockId=K_Servo block="Bewege Servo |%nr| auf |%pos|°"
     export function servo(nr: KnServo, pos: number) {
