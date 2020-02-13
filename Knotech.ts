@@ -28,6 +28,17 @@ enum KnServo {
     Servo2
 }
 
+enum Himmelsrichtung {
+	 //% block="Norden"
+	Norden,
+	 //% block="Süden"
+	Sueden,
+	 //% block="Osten
+	Osten,
+	 //% block="Westen"
+	Westen
+}
+
 enum KSensor {
     links,
     rechts
@@ -164,6 +175,26 @@ namespace callibot {
         }
     }
 
+    export function compassHeading(): number {
+        let b = board().compassState;
+        if (!b.usesHeading) {
+            b.usesHeading = true;
+            runtime.queueDisplayUpdate();
+        }
+        return b.heading;
+    }
+
+    //="Drehe in Richtung  $Himmelsrichtung"
+    //% blockId=K_wagenDrehen block="Drehe den Calli:Bot in Richtung |%mode|"
+    export function wagenDrehen(richtung: Himmelsrichtung) {
+        while (compassHeading() > 195 || compassHeading() < 165) {
+            motor(KMotor.rechts, KDir.vorwärts, 10)
+            motor(KMotor.links, KDir.rückwärts, 10)
+        }
+
+        motorStop(KMotor.motorStop, KStop.Bremsen
+    }
+	
     //% pos.min=0 pos.max=180
     //% blockId=K_Servo block="Bewege Servo |%nr| auf |%pos|°"
     export function servo(nr: KnServo, pos: number) {
