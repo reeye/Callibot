@@ -175,24 +175,15 @@ namespace callibot {
         }
     }
 
-    export function compassHeading(): number {
-        let b = board().compassState;
-        if (!b.usesHeading) {
-            b.usesHeading = true;
-            runtime.queueDisplayUpdate();
-        }
-        return b.heading;
-    }
-
     //="Drehe in Richtung  "
     //% blockId=K_wagenDrehen block="Drehe den Calli:Bot in Richtung "
     export function wagenDrehen() {
-        while (compassHeading() > 195 || compassHeading() < 165) {
-            motor(KMotor.rechts, KDir.vorwärts, 10)
-            motor(KMotor.links, KDir.rückwärts, 10)
+        while (input.compassHeading() > 195 || input.compassHeading() < 165) {
+            motor(KMotor.rechts, KDir.vorwärts, 10);
+            motor(KMotor.links, KDir.rückwärts, 10);
         }
 
-        motorStop(KMotor.motorStop, KStop.Bremsen
+        motorStop(KMotor.beide, KStop.Bremsen);
     }
 	
     //% pos.min=0 pos.max=180
