@@ -33,7 +33,7 @@ enum Himmelsrichtung {
 	Norden,
 	 //% block="Süden"
 	Sueden,
-	 //% block="Osten
+	 //% block="Osten"
 	Osten,
 	 //% block="Westen"
 	Westen
@@ -184,9 +184,9 @@ namespace callibot {
         return b.heading;
     }
 
-    //="Drehe in Richtung  $Himmelsrichtung"
-    //% blockId=K_wagenDrehen block="Drehe den Calli:Bot in Richtung |%mode|"
-    export function wagenDrehen(richtung: Himmelsrichtung) {
+    //="Drehe in Richtung  "
+    //% blockId=K_wagenDrehen block="Drehe den Calli:Bot in Richtung "
+    export function wagenDrehen() {
         while (compassHeading() > 195 || compassHeading() < 165) {
             motor(KMotor.rechts, KDir.vorwärts, 10)
             motor(KMotor.links, KDir.rückwärts, 10)
