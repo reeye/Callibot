@@ -175,19 +175,20 @@ namespace callibot {
         }
     }
 
-    //="Drehe in Richtung 5
-     "
+    //="Drehe in Richtung 1"
     //% blockId=K_wagenDrehen block="Drehe den Calli:Bot in Richtung 1"
     export function wagenDrehen() {
 
-        let heading = input.compassHeading()
+        let heading = input.compassHeading();
 
-        while ( input.compassHeading() > 45) {
+        while ( heading > 45) {
             motor(KMotor.rechts, KDir.vorwärts, 50);
             motor(KMotor.links, KDir.rückwärts, 50);
             basic.pause(10);
             motorStop(KMotor.beide, KStop.Bremsen);
             basic.pause(10);
+
+            heading = input.compassHeading();
         }
     }
 	
