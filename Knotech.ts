@@ -175,21 +175,14 @@ namespace callibot {
         }
     }
 
-    export function getRotationswert(targetHeading: number): number {
-        let diff = targetHeading - input.compassHeading();
+    export function getRotationswert(targetHeading: number, heading: number): number {
+        let diff = targetHeading - heading;
         if (diff > 180) {
             diff = diff - 360;
         } else if (diff < -180) {
             diff = diff + 360;
         }
         return diff;
-    }
-
-    export function abs(value: number) : number {
-        if (value < 0) {
-            return -value;
-        }
-        return value;
     }
 
     //="Drehe in Richtung 0"
@@ -202,10 +195,11 @@ namespace callibot {
             motorStop(KMotor.beide, KStop.Bremsen);
             basic.pause(500);
 
-            let rotation = getRotationswert(targetHeading);
-            let speed = Math.map(rotation,-180, 180, 5, 100);
+            let heading = input.compassHeading();
+            let rotation = getRotationswert(targetHeading, heading);
+            let speed = (Math.abs(rotation) / 2) + 10;
 
-            if (abs(rotation) < 5) {
+            if (Math.abs(rotation) < 5) {
                 abbruch = 1;
             }
             else if (rotation < 0) {
