@@ -192,8 +192,8 @@ namespace callibot {
         return value;
     }
 
-    //="Drehe in Richtung 1"
-    //% blockId=K_wagenDrehen block="Drehe den Calli:Bot in Richtung 1"
+    //="Drehe in Richtung 0"
+    //% blockId=K_wagenDrehen block="Drehe den Calli:Bot in Richtung 0"
     export function wagenDrehen() {
         let targetHeading = 0;
 
@@ -208,7 +208,6 @@ namespace callibot {
 
             if (abs(rotation) < 5) {
                 abbruch = 1;
-                motorStop(KMotor.beide, KStop.Bremsen);
             }
             else if (rotation < 0) {
                 motor(KMotor.rechts, KDir.vorwärts, speed);
