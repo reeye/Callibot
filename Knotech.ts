@@ -186,7 +186,7 @@ namespace callibot {
             basic.pause(500);
             
             let heading = input.compassHeading();
-
+            /*
             let rotation = targetHeading - heading;
             if (rotation > 180) {
                 rotation = rotation - 360;
