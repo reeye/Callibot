@@ -181,14 +181,15 @@ namespace callibot {
 
         let heading = input.compassHeading();
 
-        while ( heading > 45) {
-            motor(KMotor.rechts, KDir.vorwärts, 50);
-            motor(KMotor.links, KDir.rückwärts, 50);
-            basic.pause(10);
-            motorStop(KMotor.beide, KStop.Bremsen);
-            basic.pause(10);
-
-            heading = input.compassHeading();
+        while (heading > 5 || heading < 355)  {
+            if( heading > 180) {
+                motor(KMotor.rechts, KDir.vorwärts, 50);
+                motor(KMotor.links, KDir.rückwärts, 50);
+            }
+            else {
+                motor(KMotor.links, KDir.vorwärts, 50);
+                motor(KMotor.rechts, KDir.rückwärts, 50);
+            }
         }
     }
 	
