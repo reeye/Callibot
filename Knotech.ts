@@ -181,22 +181,14 @@ namespace callibot {
 
         let heading = input.compassHeading()
 
-        if (heading > 10 && heading < 180) {
-            motor(KMotor.rechts, KDir.vorwärts, 5);
-            motor(KMotor.links, KDir.rückwärts, 5);
-            while ( heading > 10) {
-                heading = input.compassHeading()
-            }
+        while ( heading > 45) {
+            motor(KMotor.rechts, KDir.vorwärts, 10);
+            motor(KMotor.links, KDir.rückwärts, 10);
+            basic.pause(100);
+            motorStop(KMotor.beide, KStop.Bremsen);
+            basic.pause(100);
+            heading = input.compassHeading()
         }
-        else if (heading < 350 && heading >=180) {
-            motor(KMotor.rechts, KDir.vorwärts, 5);
-            motor(KMotor.links, KDir.rückwärts, 5);
-            while ( heading < 350) {
-                heading = input.compassHeading()
-            }
-        }
-
-        motorStop(KMotor.beide, KStop.Bremsen);
     }
 	
     //% pos.min=0 pos.max=180
