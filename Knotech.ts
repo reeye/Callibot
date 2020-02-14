@@ -175,20 +175,50 @@ namespace callibot {
         }
     }
 
+    export function getRotationswert(targetHeading: number): number {
+        let diff = targetHeading - input.compassHeading();
+        if (diff > 180) {
+            diff = diff - 360;
+        } else if (diff < -180) {
+            diff = diff + 360;
+        }
+        return diff;
+    }
+
+    export function abs(value: number) : number {
+        if (value < 0) {
+            return -value;
+        }
+        return value;
+    }
+
     //="Drehe in Richtung 1"
     //% blockId=K_wagenDrehen block="Drehe den Calli:Bot in Richtung 1"
     export function wagenDrehen() {
+        let targetHeading = 0;
 
-        let heading = input.compassHeading();
+        let abbruch = 0
+        while (abbruch == 0) {
 
-        while (heading > 5 || heading < 355)  {
-            if( heading > 180) {
-                motor(KMotor.rechts, KDir.vorwärts, 50);
-                motor(KMotor.links, KDir.rückwärts, 50);
+            motorStop(KMotor.beide, KStop.Bremsen);
+            basic.pause(500);
+
+            let rotation = getRotationswert(targetHeading);
+            let speed = Math.map(rotation,-180, 180, 5, 100);
+
+            if (abs(rotation) < 5) {
+                abbruch = 1;
+                motorStop(KMotor.beide, KStop.Bremsen);
+            }
+            else if (rotation < 0) {
+                motor(KMotor.rechts, KDir.vorwärts, speed);
+                motor(KMotor.links, KDir.rückwärts, speed);
+                basic.pause(1000);
             }
             else {
-                motor(KMotor.links, KDir.vorwärts, 50);
-                motor(KMotor.rechts, KDir.rückwärts, 50);
+                motor(KMotor.links, KDir.vorwärts, speed);
+                motor(KMotor.rechts, KDir.rückwärts, speed);
+                basic.pause(1000);
             }
         }
     }
