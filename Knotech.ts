@@ -175,18 +175,8 @@ namespace callibot {
         }
     }
 
-    export function getRotationswert(targetHeading: number, heading: number): number {
-        let diff = targetHeading - heading;
-        if (diff > 180) {
-            diff = diff - 360;
-        } else if (diff < -180) {
-            diff = diff + 360;
-        }
-        return diff;
-    }
-
-    //="Drehe in Richtung 0"
-    //% blockId=K_wagenDrehen block="Drehe den Calli:Bot in Richtung 0"
+    //="Drehe in Richtung sonst was"
+    //% blockId=K_wagenDrehen block="Drehe den Calli:Bot in Richtung sonst was"
     export function wagenDrehen() {
         let targetHeading = 0;
         let abbruch = 0
@@ -196,7 +186,14 @@ namespace callibot {
             basic.pause(500);
 
             let heading = input.compassHeading();
-            let rotation = getRotationswert(targetHeading, heading);
+
+            let rotation = targetHeading - heading;
+            if (rotation > 180) {
+                rotation = rotation - 360;
+            } else if (rotation < -180) {
+                rotation = rotation + 360;
+            }
+
             let speed = (Math.abs(rotation) / 2) + 10;
 
             if (Math.abs(rotation) < 5) {
