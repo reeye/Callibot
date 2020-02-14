@@ -196,10 +196,9 @@ namespace callibot {
     //% blockId=K_wagenDrehen block="Drehe den Calli:Bot in Richtung 0"
     export function wagenDrehen() {
         let targetHeading = 0;
-
         let abbruch = 0
-        while (abbruch == 0) {
 
+        while (abbruch == 0) {
             motorStop(KMotor.beide, KStop.Bremsen);
             basic.pause(500);
 
