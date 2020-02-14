@@ -175,8 +175,8 @@ namespace callibot {
         }
     }
 
-    //="Drehe in Richtung sonst was"
-    //% blockId=K_wagenDrehen block="Drehe den Calli:Bot in Richtung sonst was"
+    //="Drehe in Richtung sonst pizza"
+    //% blockId=K_wagenDrehen block="Drehe den Calli:Bot in Richtung sonst pizza"
     export function wagenDrehen() {
         let targetHeading = 0;
         let abbruch = 0
@@ -184,7 +184,7 @@ namespace callibot {
         while (abbruch == 0) {
             //motorStop(KMotor.beide, KStop.Bremsen);
             basic.pause(500);
-            /*
+            
             let heading = input.compassHeading();
 
             let rotation = targetHeading - heading;
@@ -194,8 +194,9 @@ namespace callibot {
                 rotation = rotation + 360;
             }
 
+            /*
             let speed = (Math.abs(rotation) / 2) + 10;
-
+            
             if (Math.abs(rotation) < 5) {
                 abbruch = 1;
             }
