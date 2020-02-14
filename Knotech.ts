@@ -180,9 +180,9 @@ namespace callibot {
     export function wagenDrehen() {
         let targetHeading = 0;
         let abbruch = 0
-
+/*
         while (abbruch == 0) {
-            motorStop(KMotor.beide, KStop.Bremsen);
+            //motorStop(KMotor.beide, KStop.Bremsen);
             basic.pause(500);
 
             let heading = input.compassHeading();
@@ -200,16 +200,17 @@ namespace callibot {
                 abbruch = 1;
             }
             else if (rotation < 0) {
-                motor(KMotor.rechts, KDir.vorwärts, speed);
-                motor(KMotor.links, KDir.rückwärts, speed);
+                //motor(KMotor.rechts, KDir.vorwärts, speed);
+               // motor(KMotor.links, KDir.rückwärts, speed);
                 basic.pause(1000);
             }
             else {
-                motor(KMotor.links, KDir.vorwärts, speed);
-                motor(KMotor.rechts, KDir.rückwärts, speed);
+                //motor(KMotor.links, KDir.vorwärts, speed);
+               // motor(KMotor.rechts, KDir.rückwärts, speed);
                 basic.pause(1000);
             }
         }
+        */
     }
 	
     //% pos.min=0 pos.max=180
