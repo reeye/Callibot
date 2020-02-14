@@ -181,9 +181,10 @@ namespace callibot {
         let targetHeading = 0;
         let abbruch = 0
 
+        
+        /*
         let heading = input.compassHeading();
 
-        /*
 
         while (abbruch == 0) {
             //motorStop(KMotor.beide, KStop.Bremsen);
