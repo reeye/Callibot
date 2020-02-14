@@ -178,25 +178,26 @@ namespace callibot {
     //="Drehe in Richtung  "
     //% blockId=K_wagenDrehen block="Drehe den Calli:Bot in Richtung "
     export function wagenDrehen() {
-        while (input.compassHeading() > 195 || input.compassHeading() < 165) {
-            if (input.compassHeading() > 195) {
-                motor(KMotor.rechts, KDir.vorwärts, 5);
-                motor(KMotor.links, KDir.rückwärts, 5);
+
+        let heading = input.compassHeading()
+
+        if (heading > 10 && heading < 180) {
+            motor(KMotor.rechts, KDir.vorwärts, 5);
+            motor(KMotor.links, KDir.rückwärts, 5);
+            while ( heading > 10) {
+                heading = input.compassHeading()
             }
-            else {
-                motor(KMotor.rechts, KDir.rückwärts, 5);
-                motor(KMotor.links, KDir.vorwärts, 5);
+        }
+        else if (heading < 350 && heading >=180) {
+            motor(KMotor.rechts, KDir.vorwärts, 5);
+            motor(KMotor.links, KDir.rückwärts, 5);
+            while ( heading < 350) {
+                heading = input.compassHeading()
             }
         }
 
         motorStop(KMotor.beide, KStop.Bremsen);
     }
-
-
-    export function normalize(max: number, value: number) : number {
-        return (number * 10) / max
-    }
-
 	
     //% pos.min=0 pos.max=180
     //% blockId=K_Servo block="Bewege Servo |%nr| auf |%pos|°"
