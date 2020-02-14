@@ -180,11 +180,11 @@ namespace callibot {
     export function wagenDrehen() {
         let targetHeading = 0;
         let abbruch = 0
-/*
+
         while (abbruch == 0) {
             //motorStop(KMotor.beide, KStop.Bremsen);
             basic.pause(500);
-
+            /*
             let heading = input.compassHeading();
 
             let rotation = targetHeading - heading;
@@ -209,8 +209,9 @@ namespace callibot {
                // motor(KMotor.rechts, KDir.rückwärts, speed);
                 basic.pause(1000);
             }
+            */
         }
-        */
+        
     }
 	
     //% pos.min=0 pos.max=180
